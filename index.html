@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexora Restaurant AI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bg-glow"></div>
+
+<header class="navbar">
+  <div class="logo">Nexora<span>AI</span></div>
+
+  <nav id="publicNav">
+    <a href="#inicio">Inicio</a>
+    <a onclick="showLogin()">Ver demo</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <nav id="appNav" class="hidden">
+    <a onclick="showPage('dashboard')">Dashboard</a>
+    <a onclick="showPage('pedidos')">Pedidos</a>
+    <a onclick="showPage('clientes')">Clientes</a>
+    <a onclick="showPage('reservas')">Reservas</a>
+    <a onclick="showPage('menu')">Menu QR</a>
+    <a onclick="showPage('qr')">QR Público</a>
+    <a onclick="showPage('cocina')">Cocina</a>
+    <a onclick="showPage('ia')">IA Promo</a>
+  </nav>
+
+  <div id="adminBox" class="admin-box hidden">
+    <div class="circle">A</div>
+    <div>
+      <h4>Admin</h4>
+      <p>Administrador</p>
+    </div>
+    <button class="logout" onclick="logout()">Salir</button>
+  </div>
+</header>
+
+<section class="hero page" id="inicio">
+  <p class="tag">Restaurant SaaS Platform</p>
+
+  <div class="badges">
+    <span>⚡ Menu QR</span>
+    <span>🍔 Pedidos en vivo</span>
+    <span>🤖 IA Promo</span>
+    <span>📱 Mobile Ready</span>
+  </div>
+
+  <h1>Nexora Restaurant AI</h1>
+
+  <h3>Pedidos QR, cocina en vivo y automatización inteligente para restaurantes modernos.</h3>
+
+  <p>
+    Plataforma para digitalizar restaurantes con menú QR, carrito, cocina en vivo,
+    dashboard administrativo, reservas, clientes y promociones con IA.
+  </p>
+
+  <div class="buttons">
+    <button onclick="showLogin()">Ver demo</button>
+    <a href="#contacto" class="ghost">Solicitar demo</a>
+  </div>
+</section>
+
+<section class="login-page page hidden" id="login">
+  <div class="login-card">
+    <p class="tag">Admin Access</p>
+    <h1>Nexora<span>AI</span></h1>
+    <h3>Restaurant Control Center</h3>
+
+    <input id="email" placeholder="Admin email">
+    <input id="password" type="password" placeholder="Password">
+
+    <button onclick="loginDemo()">Launch Dashboard</button>
+
+    <p class="demo">Demo: admin@nexora.com / 1234</p>
+  </div>
+</section>
+
+<main class="content hidden" id="app">
+
+  <section class="app-page" id="dashboard">
+    <p class="tag">Panel Admin</p>
+    <h1>Restaurant Dashboard</h1>
+
+    <div class="cards">
+      <div class="card"><p>🍔 Pedidos</p><h2 id="dashPedidos">3</h2></div>
+      <div class="card"><p>💰 Ingresos</p><h2>$342.000</h2></div>
+      <div class="card"><p>👥 Clientes</p><h2>86</h2></div>
+      <div class="card"><p>📦 Reservas</p><h2>12</h2></div>
+      <div class="card"><p>⭐ Rating</p><h2>4.9</h2></div>
+      <div class="card"><p>🚀 Pedidos online</p><h2>68%</h2></div>
+    </div>
+  </section>
+
+  <section class="app-page hidden" id="pedidos">
+    <p class="tag">Gestión de pedidos</p>
+    <h1>Pedidos</h1>
+
+    <div class="panel">
+      <h2>Pedidos cargados</h2>
+      <div id="ordersList" class="list"></div>
+    </div>
+  </section>
+
+  <section class="app-page hidden" id="clientes">
+    <p class="tag">Base de clientes</p>
+    <h1>Clientes</h1>
+
+    <div class="panel">
+      <h2>Clientes frecuentes</h2>
+
+      <div class="list">
+        <div class="list-item"><strong>Juan Pérez</strong><p>12 pedidos · Cliente VIP</p></div>
+        <div class="list-item"><strong>Martina Gómez</strong><p>8 pedidos · Reserva activa</p></div>
+        <div class="list-item"><strong>Lucas Díaz</strong><p>5 pedidos este mes</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="app-page hidden" id="reservas">
+    <p class="tag">Control de reservas</p>
+    <h1>Reservas</h1>
+
+    <div class="panel">
+      <h2>Reservas próximas</h2>
+
+      <div class="list">
+        <div class="list-item"><strong>21:00</strong><p>4 personas · Mesa 5</p></div>
+        <div class="list-item"><strong>22:30</strong><p>2 personas · Mesa 8</p></div>
+        <div class="list-item"><strong>23:00</strong><p>6 personas · Mesa 3</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="app-page hidden" id="menu">
+    <p class="tag">Gestión de menú</p>
+    <h1>Menu QR</h1>
+
+    <div class="panel">
+      <h2>Productos cargados</h2>
+
+      <div class="list">
+        <div class="list-item"><strong>Smash Bacon</strong><p>$8500 · Hamburguesas · Disponible</p></div>
+        <div class="list-item"><strong>Pizza Trufa</strong><p>$9200 · Pizzas · Disponible</p></div>
+        <div class="list-item"><strong>Papas Cheddar</strong><p>$4800 · Extras · Disponible</p></div>
+        <div class="list-item"><strong>Coca Cola</strong><p>$2500 · Bebidas · Disponible</p></div>
+      </div>
+
+      <button onclick="showPage('qr')">Abrir QR Público</button>
+    </div>
+  </section>
+
+  <section class="app-page hidden" id="qr">
+    <div class="restaurant-banner">
+      <div>
+        <p class="tag">Brooklyn Burgers</p>
+        <h1>Menu Digital</h1>
+      </div>
+
+      <span class="online-dot">● Online</span>
+    </div>
+
+    <div class="qr-layout">
+      <div class="products">
+        <div class="food-card">
+          <span>🍔</span>
+          <h3>Smash Bacon</h3>
+          <p>Hamburguesa doble, cheddar, bacon y salsa especial.</p>
+          <h4>$8500</h4>
+          <button onclick="addToCart('Smash Bacon', 8500)">Agregar</button>
+        </div>
+
+        <div class="food-card">
+          <span>🍕</span>
+          <h3>Pizza Trufa</h3>
+          <p>Muzzarella, hongos, aceite de trufa y masa artesanal.</p>
+          <h4>$9200</h4>
+          <button onclick="addToCart('Pizza Trufa', 9200)">Agregar</button>
+        </div>
+
+        <div class="food-card">
+          <span>🍟</span>
+          <h3>Papas Cheddar</h3>
+          <p>Papas crocantes con cheddar fundido y panceta.</p>
+          <h4>$4800</h4>
+          <button onclick="addToCart('Papas Cheddar', 4800)">Agregar</button>
+        </div>
+
+        <div class="food-card">
+          <span>🥤</span>
+          <h3>Coca Cola</h3>
+          <p>Bebida fría 500ml.</p>
+          <h4>$2500</h4>
+          <button onclick="addToCart('Coca Cola', 2500)">Agregar</button>
+        </div>
+      </div>
+
+      <aside class="cart">
+        <h2>🛒 Tu pedido</h2>
+
+        <ul id="cartList"></ul>
+
+        <div class="total">
+          <span>Total</span>
+          <strong>$<span id="cartTotal">0</span></strong>
+        </div>
+
+        <input id="mesaInput" placeholder="Número de mesa">
+        <button onclick="sendOrder()">Confirmar pedido</button>
+      </aside>
+    </div>
+  </section>
+
+  <section class="app-page hidden" id="cocina">
+    <p class="tag">Pantalla de cocina</p>
+    <h1>Cocina en vivo</h1>
+
+    <div id="popup" class="popup hidden">🔔 NUEVO PEDIDO</div>
+
+    <div class="panel kitchen-info">
+      <h2>🔥 Pedidos entrantes</h2>
+      <p>Cuando un cliente confirma desde el QR, el pedido aparece en cocina.</p>
+    </div>
+
+    <div class="kitchen-grid" id="kitchenOrders"></div>
+  </section>
+
+  <section class="app-page hidden" id="ia">
+    <p class="tag">Promociones inteligentes</p>
+    <h1>IA Promo</h1>
+
+    <div class="panel ia-panel">
+      <h2>🤖 Generador de promociones</h2>
+
+      <input id="aiInput" placeholder="Ej: promo para hamburguesas">
+      <button onclick="generatePromo()">Generar promo</button>
+
+      <p id="aiResult">Tu promoción aparecerá acá...</p>
+    </div>
+  </section>
+
+</main>
+
+<section class="section contact page" id="contacto">
+  <h2>¿Querés una demo para tu restaurante?</h2>
+  <p>Digitalizá pedidos, menú QR, reservas y cocina con Nexora Restaurant AI.</p>
+
+  <a href="https://wa.me/" target="_blank">Solicitar demo</a>
+</section>
+
+<footer class="footer">
+  <h2>Nexora<span>AI</span></h2>
+  <p>The future of restaurant management.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
